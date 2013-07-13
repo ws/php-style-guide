@@ -36,14 +36,14 @@ Always use <code><?php</code> to delimit PHP code. Do not use the shorthand vers
   <li>Control statements should have one space between the control keyword and opening parenthesis, to distinguish them from function calls.</li>
   <li>Always use curly braces even in situations where they are technically optional.</li>
   <li>Wrap ternary logic in parens.</li>
-  <li>Don't use <code>else if</code>, but rather <code>elseif</code>.</li>
+  <li>Use <code>else if</code>, rather than <code>elseif</code>.</li>
 </ul>
 <h3>Examples</h3>
 <h5>If statements</h5>
 <pre>
 if (condition1 || condition2) {
   action1;
-} elseif (condition3 && condition4) {
+} else if (condition3 && condition4) {
   action2;
 } else {
   defaultaction;
@@ -122,23 +122,3 @@ $arr = array(
 
 
 <p>...more to come.</p>
-
-
-<h2>Emacs Notes</h2>
-
-Since the style guide is similar to Drupal's, we can steal some configuration from <a href="http://drupal.org/node/59868">this "drupal-mode</a>" for our php-mode (this goes in .emacs, naturally):
-
-<pre>
-(add-hook 'php-mode-hook
-          (lambda ()
-            (setq c-basic-offset 2)
-            (setq indent-tabs-mode nil)
-            (setq fill-column 78)
-            (setq show-trailing-whitespace t)
-            (add-hook 'before-save-hook 'delete-trailing-whitespace)
-            (c-set-offset 'case-label '+)
-            (c-set-offset 'arglist-close 0)
-            (c-set-offset 'arglist-intro '+) ; for FAPI arrays and DBTNG
-            (c-set-offset 'arglist-cont-nonempty 'c-lineup-math))) ; for DBTNG fields and values
-
-</pre>
